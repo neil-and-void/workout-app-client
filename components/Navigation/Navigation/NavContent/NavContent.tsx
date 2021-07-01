@@ -1,15 +1,12 @@
 import { ReactNode } from 'react';
 
 interface NavContentProps {
-  children: ReactNode
-};
-
-const NavContent = ({ children }: NavContentProps) => {
-  return (
-    <div>
-      {children}
-    </div>
-  )
+  children: ReactNode;
+  className: string;
 }
 
-export default NavContent
+const NavContent = ({ children, className }: NavContentProps) => {
+  return <div className={className}>{children}</div>;
+};
+
+export default NavContent;

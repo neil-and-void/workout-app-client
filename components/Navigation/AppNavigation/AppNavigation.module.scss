@@ -1,0 +1,19 @@
+.navContent {
+  padding-bottom: 4rem; // this value must correlate with the height of navBar below
+}
+
+.navBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+  position: absolute;
+  bottom: 0;
+  background-color: #0d0d0d;
+  border-top: 1px solid #242429;
+}
+
+.navItem {
+  margin: 0 8%;
+}
