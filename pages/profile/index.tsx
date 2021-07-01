@@ -1,9 +1,16 @@
 import AppNavigation from '../../components/Navigation/AppNavigation';
 
-const Profile = () => {
-	return (
-			<AppNavigation>Profile</AppNavigation>
-	)
-}
+import styles from './Profile.module.scss';
 
-export default Profile
+const Profile = () => {
+  return (
+    <AppNavigation>
+      <div className={styles.profile}>
+        <div className={styles.profilePicture} />
+        profile
+      </div>
+    </AppNavigation>
+  );
+};
+
+export default Profile;

@@ -1,0 +1,11 @@
+.profile {
+  display: grid;
+  place-items: center;
+}
+
+.profilePicture {
+  height: 100px;
+  aspect-ratio: 1 / 1;
+  background: grey;
+  border-radius: 50%;
+}

@@ -11,8 +11,10 @@ const WorkoutList = ({ className }: WorkoutListProps) => {
 
   return (
     <div className={className}>
-      {workouts.map((workout) => (
-        <WorkoutItem className={styles.workoutItem}>{workout}</WorkoutItem>
+      {workouts.map((workout, idx) => (
+        <WorkoutItem key={idx} className={styles.workoutItem}>
+          {workout}
+        </WorkoutItem>
       ))}
     </div>
   );

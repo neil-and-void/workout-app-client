@@ -1,0 +1,3 @@
+interface Workout {
+  name: string;
+}
