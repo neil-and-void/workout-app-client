@@ -1,5 +1,11 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+}
+
 .addWorkoutButtonContainer {
   text-align: right;
+  padding-top: var(--page-content-padding);
 }
 
 .addWorkoutButton {

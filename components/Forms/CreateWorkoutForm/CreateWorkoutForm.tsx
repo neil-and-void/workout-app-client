@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import { useRouter } from 'next/router';
 
 import Button from '../../../components/Button';
 import styles from './CreateWorkoutForm.module.scss';
@@ -9,6 +10,7 @@ interface CreateWorkoutFormProps {
 }
 
 const CreateWorkoutForm = ({ onNext, onCancel }: CreateWorkoutFormProps) => {
+  const router = useRouter();
   return (
     <Formik
       initialValues={{
@@ -20,14 +22,24 @@ const CreateWorkoutForm = ({ onNext, onCancel }: CreateWorkoutFormProps) => {
     >
       {(props) => (
         <>
-          <Button className={`${styles.textButton} ${styles.cancelButton}`}>
+          <Button
+            onClick={() => router.push('/workouts')}
+            className={`${styles.textButton} ${styles.cancelButton}`}
+          >
             Cancel
           </Button>
-          <Button className={`${styles.textButton} ${styles.nextButton}`}>
+          <Button
+            onClick={() => router.push('/create/exercises')}
+            className={`${styles.textButton} ${styles.nextButton}`}
+          >
             Next
           </Button>
           <div className={styles.workoutNameContainer}>
-            <input className={styles.workoutName} name="name" />
+            <input
+              className={styles.workoutName}
+              name="name"
+              placeholder="Workout name"
+            />
           </div>
         </>
       )}

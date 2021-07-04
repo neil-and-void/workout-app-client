@@ -12,12 +12,15 @@ const Workouts = () => {
   return (
     <AppNavigation>
       <div className={styles.addWorkoutButtonContainer}>
-        <Button
-          className={styles.addWorkoutButton}
-          onClick={() => router.push('/create/workout')}
-        >
-          new workout
-        </Button>
+        <div className={styles.heading}>
+          <h1 className="header">Workouts</h1>
+          <Button
+            className={styles.addWorkoutButton}
+            onClick={() => router.push('/create/workout')}
+          >
+            new workout
+          </Button>
+        </div>
       </div>
       <WorkoutList />
     </AppNavigation>

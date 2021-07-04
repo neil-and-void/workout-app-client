@@ -1,4 +1,11 @@
 .profile {
+  // display: grid;
+  // place-items: center;
+  padding-top: var(--page-content-padding);
+}
+
+.profileContainer {
+  width: 100%;
   display: grid;
   place-items: center;
 }

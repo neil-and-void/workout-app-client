@@ -6,8 +6,11 @@ const Profile = () => {
   return (
     <AppNavigation>
       <div className={styles.profile}>
-        <div className={styles.profilePicture} />
-        profile
+        <h1 className="header">Profile</h1>
+        <div className={styles.profileContainer}>
+          <div className={styles.profilePicture} />
+          profile
+        </div>
       </div>
     </AppNavigation>
   );
