@@ -1,3 +1,3 @@
-class ExerciseService {
+export default class ExerciseService {
   constructor() {}
 }

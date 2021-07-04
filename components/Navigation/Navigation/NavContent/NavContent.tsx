@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
 interface NavContentProps {
-  children: ReactNode;
-  className: string;
+  children?: ReactNode;
+  className?: string;
 }
 
 const NavContent = ({ children, className }: NavContentProps) => {

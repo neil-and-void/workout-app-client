@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
 interface NavSideBarProps {
-  children: ReactNode;
-  className: string;
+  children?: ReactNode;
+  className?: string;
 }
 
 const NavSideBar = ({ children, className }: NavSideBarProps) => {
