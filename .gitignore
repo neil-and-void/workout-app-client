@@ -248,3 +248,5 @@ ModelManifest.xml
 
 # Custom project files
 js/build/
+# Local Netlify folder
+.netlify

@@ -1,0 +1,68 @@
+.exerciseForm {
+  padding-top: 3.125rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.exerciseInput {
+  border-bottom: 2px solid rgb(148, 148, 148);
+  border-radius: 0;
+  background-color: transparent;
+  width: 100%;
+}
+
+.exerciseList {
+  overflow-y: scroll;
+  flex: 1;
+}
+
+.exercise {
+  display: flex;
+}
+
+.name {
+  margin-right: 1rem;
+}
+
+.sets {
+  flex: 20%;
+}
+
+.textButton {
+  padding: 0.5rem;
+  background-color: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.exercise {
+  border-bottom: 1px solid rgb(68, 68, 68);
+  padding: 0.8rem 0;
+}
+
+.exercise:last-child {
+  border-bottom: 0;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.plusIcon {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.createButton {
+  width: 100%;
+}
+
+.createButtonContainer {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--black-bg);
+}

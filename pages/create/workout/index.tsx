@@ -1,5 +1,18 @@
+import { useRouter } from 'next/router';
+
+import CreateWorkoutForm from '../../../components/Forms/CreateWorkoutForm';
+
 const CreateWorkout = () => {
-  return <div>workout</div>;
+  const router = useRouter();
+
+  return (
+    <div className="container">
+      <CreateWorkoutForm
+        onCancel={() => router.push('/workouts')}
+        onNext={() => router.push('/create/exercises')}
+      />
+    </div>
+  );
 };
 
 export default CreateWorkout;
