@@ -7,10 +7,14 @@ export default class UserService {
     axios.post('http://127.0.0.1:8000/api/users/signup', values);
   }
 
-  login(values) {
+  async login(values) {
     const formData = new FormData();
     formData.append('username', values.email);
     formData.append('password', values.password);
-    axios.post('http://127.0.0.1:8000/api/users/token', formData);
+    const accessToken = await axios.post(
+      'http://127.0.0.1:8000/api/users/token',
+      formData
+    );
+    return accessToken;
   }
 }

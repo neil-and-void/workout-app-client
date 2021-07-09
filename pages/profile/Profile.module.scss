@@ -16,3 +16,25 @@
   background: grey;
   border-radius: 50%;
 }
+
+.userInfo {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.info {
+  width: 33%;
+  font-size: 1.5rem;
+  font-size: 400;
+  text-align: center;
+}
+
+.secondaryText {
+  color: #525662;
+  font-size: 0.75rem;
+}
+
+.infoLabel {
+  font-size: 0.75rem;
+}
