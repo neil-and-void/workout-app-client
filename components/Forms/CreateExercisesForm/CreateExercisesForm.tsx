@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Formik } from 'formik';
 
+import {
+  addExerciseTemplate,
+  createWorkoutTemplate,
+} from '../../../redux/actions/createWorkout';
 // @ts-ignore
 import PlusIcon from '../../../assets/icons/plus.svg';
 import Button from '../../Button';
@@ -9,42 +13,13 @@ import styles from './CreateExercisesForm.module.scss';
 
 const CreateExercisesForm = () => {
   const router = useRouter();
-  const [exercises, setExercises] = useState([
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-    { name: 'e1', sets: 4 },
-  ]);
+  const dispatch = useDispatch();
+  const workoutTemplate = useSelector(
+    ({ createWorkoutReducer }) => createWorkoutReducer.workoutTemplate
+  );
 
-  const createWorkout = () => {
+  const createNewWorkoutTemplate = (values) => {
+    dispatch(createWorkoutTemplate(workoutTemplate));
     router.push('/workouts');
   };
 
@@ -56,40 +31,54 @@ const CreateExercisesForm = () => {
           name: '',
           sets: '',
         }}
-        onSubmit={(values, actions) => {}}
+        onSubmit={(values, actions) => {
+          dispatch(addExerciseTemplate(values));
+          actions.resetForm({});
+        }}
       >
         {(props) => (
-          <div className={styles.inputContainer}>
-            <input
-              name="name"
-              type="text"
-              className={`${styles.exerciseInput} ${styles.name}`}
-              placeholder="name"
-            />
-            <input
-              name="sets"
-              type="number"
-              className={`${styles.exerciseInput} ${styles.sets}`}
-              placeholder="sets"
-            />
-            <Button className={styles.textButton}>
-              <PlusIcon className={styles.plusIcon} />
-              Add
-            </Button>
-          </div>
+          <form onSubmit={props.handleSubmit}>
+            <div className={styles.inputContainer}>
+              <input
+                name="name"
+                type="text"
+                className={`${styles.exerciseInput} ${styles.name}`}
+                placeholder="name"
+                onChange={props.handleChange}
+                onBlur={props.handleBlur}
+                value={props.values.name}
+              />
+              <input
+                name="sets"
+                type="number"
+                className={`${styles.exerciseInput} ${styles.sets}`}
+                placeholder="sets"
+                onChange={props.handleChange}
+                onBlur={props.handleBlur}
+                value={props.values.sets}
+              />
+              <Button className={styles.textButton}>
+                <PlusIcon className={styles.plusIcon} />
+                Add
+              </Button>
+            </div>
+          </form>
         )}
       </Formik>
       <div className={styles.exerciseList}>
-        {exercises.map((exercise, idx) => (
+        {workoutTemplate.exerciseTemplates.map((exercise, idx) => (
           <div className={styles.exercise} key={idx}>
             <div>{exercise.sets}</div>
-            <span> x </span>
+            <span>&#160;x&#160;</span>
             <div>{exercise.name}</div>
           </div>
         ))}
       </div>
       <div className={`${styles.createButtonContainer}`}>
-        <Button onClick={createWorkout} className={styles.createButton}>
+        <Button
+          onClick={createNewWorkoutTemplate}
+          className={styles.createButton}
+        >
           Create
         </Button>
       </div>

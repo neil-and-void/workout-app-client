@@ -1,8 +1,10 @@
 import { Formik } from 'formik';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 
-import UserService from '../../../services/UserService';
+import AuthService from '../../../services/AuthService';
 import Button from '../../Button';
 import styles from './LoginForm.module.scss';
 
@@ -11,7 +13,10 @@ interface SignUpFormProps {
 }
 
 const LoginForm = ({ className }: SignUpFormProps) => {
+  const dispatch = useDispatch();
   const router = useRouter();
+  const [error, setError] = useState(null);
+
   const LoginSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Required'),
     password: Yup.string()
@@ -22,8 +27,23 @@ const LoginForm = ({ className }: SignUpFormProps) => {
       .required('Required'),
   });
 
+  const login = async (values) => {
+    try {
+      const authService = new AuthService();
+      const response = await authService.login(values);
+      localStorage.setItem(
+        'token',
+        response.data.token_type + ' ' + response.data.access_token
+      );
+      router.push('/workouts');
+    } catch (err) {
+      setError(err.response.data);
+    }
+  };
+
   return (
     <div className={className}>
+      <div className="error">{error}</div>
       <Formik
         initialValues={{
           email: '',
@@ -31,14 +51,8 @@ const LoginForm = ({ className }: SignUpFormProps) => {
         }}
         validationSchema={LoginSchema}
         validate={() => ({})}
-        onSubmit={async (values, actions) => {
-          try {
-            const userService = new UserService();
-            await userService.login(values);
-            router.push('/workouts');
-          } catch (e) {
-            console.error(e);
-          }
+        onSubmit={(values, actions) => {
+          login(values);
         }}
       >
         {(props) => (
