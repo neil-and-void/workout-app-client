@@ -30,9 +30,6 @@ const SignUpForm = ({ className }: SignUpFormProps) => {
 
   return (
     <div className={className}>
-      <div className={styles.signUpWithGoogle}>
-        <Button>Google</Button>
-      </div>
       <Formik
         initialValues={{
           email: '',

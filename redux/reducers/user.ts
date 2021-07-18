@@ -1,4 +1,6 @@
 import produce from 'immer';
+import { HYDRATE } from 'next-redux-wrapper';
+
 import * as constants from '../constants/user';
 
 const initialState = {
@@ -10,6 +12,10 @@ const initialState = {
 
 const userReducer = produce((draft, action) => {
   switch (action.type) {
+    case HYDRATE:
+      // Attention! This will overwrite client state! Real apps should use proper reconciliation.
+      // draft = action.payload;
+      break;
     case constants.GET_USER:
       draft.loading = true;
       break;

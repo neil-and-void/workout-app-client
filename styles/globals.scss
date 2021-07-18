@@ -1,6 +1,7 @@
 :root {
   --border-radius: 12px;
   --black-bg: #0f0f0f;
+  --input-bg: #1a1a1a;
   --page-content-padding: 3.125rem;
 }
 
@@ -75,4 +76,18 @@ input {
   font-size: 2rem;
   line-height: 2.1rem;
   color: #fff;
+}
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+}
+
+.link {
+  text-decoration: underline;
+  background-color: transparent !important;
+  color: #fff !important;
+  width: fit-content;
+  padding: 0 !important;
+  margin: 0.5rem 0;
 }

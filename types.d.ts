@@ -11,5 +11,3 @@ interface WorkoutTemplate {
   name: string;
   exerciseTemplates: Array<ExerciseTemplate>;
 }
-
-export type { Workout, WorkoutTemplate };

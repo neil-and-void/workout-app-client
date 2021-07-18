@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 import {
   addExerciseTemplate,
   createWorkoutTemplate,
-} from '../../../redux/actions/createWorkout';
+} from '../../../redux/actions/template';
 // @ts-ignore
 import PlusIcon from '../../../assets/icons/plus.svg';
 import Button from '../../Button';
@@ -15,8 +16,13 @@ const CreateExercisesForm = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const workoutTemplate = useSelector(
-    ({ createWorkoutReducer }) => createWorkoutReducer.workoutTemplate
+    ({ templateReducer }) => templateReducer.workoutTemplateForm
   );
+
+  const CreateExerciseFormSchema = Yup.object().shape({
+    name: Yup.string().max(128).required('Required'),
+    sets: Yup.number().required('Required'),
+  });
 
   const createNewWorkoutTemplate = (values) => {
     dispatch(createWorkoutTemplate(workoutTemplate));
@@ -31,6 +37,7 @@ const CreateExercisesForm = () => {
           name: '',
           sets: '',
         }}
+        validationSchema={CreateExerciseFormSchema}
         onSubmit={(values, actions) => {
           dispatch(addExerciseTemplate(values));
           actions.resetForm({});
@@ -57,7 +64,7 @@ const CreateExercisesForm = () => {
                 onBlur={props.handleBlur}
                 value={props.values.sets}
               />
-              <Button className={styles.textButton}>
+              <Button className={styles.textButton} type="submit">
                 <PlusIcon className={styles.plusIcon} />
                 Add
               </Button>

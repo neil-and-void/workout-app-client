@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import Button from '../components/Button';
 import styles from './Home.module.scss';
 
@@ -8,15 +8,15 @@ const Home = () => {
   return (
     <div className={styles.home}>
       <div className={styles.loginButtons}>
-        <Button className={styles.loginButton} onClick={() => router.push('/login')}>
+        <Button
+          className={styles.loginButton}
+          onClick={() => router.push('/login')}
+        >
           Login with email
-      </Button>
-        <Button className={`${styles.loginButton} ${styles.googleLogin}`} onClick={() => console.log('hi')}>
-          Login with google
-      </Button>
+        </Button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Home;

@@ -31,13 +31,11 @@ const LoginForm = ({ className }: SignUpFormProps) => {
     try {
       const authService = new AuthService();
       const response = await authService.login(values);
-      localStorage.setItem(
-        'token',
-        response.data.token_type + ' ' + response.data.access_token
-      );
+      console.log(response.headers['set-cookie']);
       router.push('/workouts');
     } catch (err) {
-      setError(err.response.data);
+      console.error(err);
+      // setError(err.response.data);
     }
   };
 

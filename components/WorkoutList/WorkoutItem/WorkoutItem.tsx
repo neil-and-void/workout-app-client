@@ -16,7 +16,7 @@ const WorkoutItem = ({ children, className }: WorkoutItemProps) => {
   return (
     <div className={`${styles.workoutItem} ${className}`}>
       <div className={styles.workoutInfo}>
-        <div className={styles.name}>Leg day</div>
+        <div className={styles.name}>children</div>
         <div className={styles.info}>
           6 exercises <span> · </span> 24 sets
         </div>
@@ -25,7 +25,7 @@ const WorkoutItem = ({ children, className }: WorkoutItemProps) => {
         className={styles.startButton}
         onClick={() => router.push('workouts/1234')}
       >
-        Start
+        View
       </Button>
     </div>
   );

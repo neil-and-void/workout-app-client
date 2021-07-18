@@ -1,5 +1,23 @@
+import ExerciseItem from './ExerciseItem';
+
 const ExerciseList = () => {
-  return <div></div>;
+  const exercises = [
+    'squat',
+    'squat',
+    'squat',
+    'squat',
+    'squat',
+    'squat',
+    'squat',
+  ];
+
+  return (
+    <div>
+      {exercises.map((exercise) => (
+        <ExerciseItem exercise={exercise} />
+      ))}
+    </div>
+  );
 };
 
 export default ExerciseList;

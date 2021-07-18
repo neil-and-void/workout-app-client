@@ -1,4 +1,6 @@
 import produce from 'immer';
+import { HYDRATE } from 'next-redux-wrapper';
+
 import * as constants from '../constants/workout';
 
 const initialState = {};

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 
-import { setWorkoutTemplateName } from '../../../redux/actions/createWorkout';
+import { setWorkoutTemplateName } from '../../../redux/actions/template';
 import Button from '../../../components/Button';
 import styles from './CreateWorkoutForm.module.scss';
 
@@ -31,7 +31,6 @@ const CreateWorkoutForm = ({ onNext, onCancel }: CreateWorkoutFormProps) => {
       validationSchema={CreateWorkoutSchema}
       validate={() => ({})}
       onSubmit={(values, actions) => {
-        console.log(values);
         dispatch(setWorkoutTemplateName(values.name));
         router.push('/create/exercises');
       }}

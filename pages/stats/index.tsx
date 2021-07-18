@@ -8,6 +8,7 @@ const Stats = () => {
       <AppNavigation>
         <div className={styles.stats}>
           <h1 className="header">Stats</h1>
+          <div>coming soon!</div>
         </div>
       </AppNavigation>
     </AuthGuard>

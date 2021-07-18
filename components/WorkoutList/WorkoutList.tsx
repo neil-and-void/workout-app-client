@@ -4,10 +4,19 @@ import styles from './WorkoutList.module.scss';
 
 interface WorkoutListProps {
   className?: string;
+  workouts: Array<ExerciseTemplate>;
 }
 
-const WorkoutList = ({ className }: WorkoutListProps) => {
-  const workouts = ['day 1', 'day 1', 'day 1', 'day 1', 'day 1'];
+const WorkoutList = ({ className, workouts }: WorkoutListProps) => {
+  if (workouts.length === 0) {
+    return (
+      <div className={className}>
+        <div className={styles.noWorkoutTemplates}>
+          You don't have any workout templates!
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={className}>

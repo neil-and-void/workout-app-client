@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import '../styles/globals.scss';
 import { Provider } from 'react-redux';
-import store from '../redux';
+import { wrapper } from '../redux';
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
-    <Provider store={store}>
+    <>
       <Head>
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
@@ -29,8 +29,8 @@ function MyApp({ Component, pageProps }) {
         ></link>
       </Head>
       <Component {...pageProps} />
-    </Provider>
+    </>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(App);
