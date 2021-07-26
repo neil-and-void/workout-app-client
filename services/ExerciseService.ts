@@ -1,3 +1,3 @@
-export default class ExerciseService {
-  constructor() {}
-}
+import axios from 'axios';
+
+export default class ExerciseService {}

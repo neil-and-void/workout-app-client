@@ -54,14 +54,14 @@ export const getWorkoutTemplates = (accessToken) => {
   };
 };
 
-export const getExerciseTemplates = (accessToken, workoutTemplateId) => {
+export const getExerciseTemplates = (workoutTemplateId, accessToken) => {
   return async (dispatch) => {
     dispatch({
       type: constants.GET_EXERCISE_TEMPLATES,
     });
     const exerciseTemplates = await templateService.getExerciseTemplates(
-      accessToken,
-      workoutTemplateId
+      workoutTemplateId,
+      accessToken
     );
     dispatch({
       type: constants.GET_EXERCISE_TEMPLATES_SUCCESS,

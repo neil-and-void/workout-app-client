@@ -1,3 +1,7 @@
 export default class WorkoutService {
-  constructor() {}
+  startWorkout(workoutId, accessToken) {}
+
+  endWorkout(workoutId, accessToken) {}
+
+  updateWorkout() {}
 }

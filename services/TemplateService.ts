@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { serialize } from 'cookie';
 
 class TemplateService {
   async createWorkoutTemplate() {
@@ -7,18 +8,34 @@ class TemplateService {
     });
   }
 
-  async getWorkoutTemplates() {
+  async getWorkoutTemplates(accessToken) {
     const response = await axios.get(
       `http://127.0.0.1:8000/api/templates/workouts`,
-      { withCredentials: true }
+      {
+        withCredentials: true,
+        headers: {
+          cookie: serialize('token', accessToken, {
+            sameSite: true,
+            httpOnly: true,
+          }),
+        },
+      }
     );
     return response.data;
   }
 
-  async getExerciseTemplates(workoutTemplateId) {
+  async getExerciseTemplates(workoutTemplateId, accessToken) {
     const response = await axios.get(
       `http://127.0.0.1:8000/api/templates/exercises?workoutTemplateId=${workoutTemplateId}`,
-      { withCredentials: true }
+      {
+        withCredentials: true,
+        headers: {
+          cookie: serialize('token', accessToken, {
+            sameSite: true,
+            httpOnly: true,
+          }),
+        },
+      }
     );
     return response.data;
   }

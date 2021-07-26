@@ -4,10 +4,15 @@ import styles from './WorkoutList.module.scss';
 
 interface WorkoutListProps {
   className?: string;
-  workouts: Array<ExerciseTemplate>;
+  workouts: Array<WorkoutTemplate>;
+  onClickItem?: (number) => void;
 }
 
-const WorkoutList = ({ className, workouts }: WorkoutListProps) => {
+const WorkoutList = ({
+  className,
+  workouts,
+  onClickItem,
+}: WorkoutListProps) => {
   if (workouts.length === 0) {
     return (
       <div className={className}>
@@ -21,8 +26,12 @@ const WorkoutList = ({ className, workouts }: WorkoutListProps) => {
   return (
     <div className={className}>
       {workouts.map((workout, idx) => (
-        <WorkoutItem key={idx} className={styles.workoutItem}>
-          {workout}
+        <WorkoutItem
+          key={idx}
+          className={styles.workoutItem}
+          onClick={(e) => onClickItem(workout.id)}
+        >
+          {workout.name}
         </WorkoutItem>
       ))}
     </div>

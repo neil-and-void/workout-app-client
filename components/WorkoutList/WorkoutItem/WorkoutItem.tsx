@@ -1,30 +1,24 @@
 import { ReactNode } from 'react';
-import { useRouter } from 'next/router';
 
 import Button from '../../../components/Button';
-
 import styles from './WorkoutItem.module.scss';
 
 interface WorkoutItemProps {
   children: ReactNode;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className: string;
 }
 
-const WorkoutItem = ({ children, className }: WorkoutItemProps) => {
-  const router = useRouter();
-
+const WorkoutItem = ({ children, className, onClick }: WorkoutItemProps) => {
   return (
     <div className={`${styles.workoutItem} ${className}`}>
       <div className={styles.workoutInfo}>
-        <div className={styles.name}>children</div>
+        <div className={styles.name}>{children}</div>
         <div className={styles.info}>
           6 exercises <span> · </span> 24 sets
         </div>
       </div>
-      <Button
-        className={styles.startButton}
-        onClick={() => router.push('workouts/1234')}
-      >
+      <Button className={styles.startButton} onClick={onClick}>
         View
       </Button>
     </div>

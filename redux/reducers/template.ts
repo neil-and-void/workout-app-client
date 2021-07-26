@@ -18,13 +18,10 @@ const templateReducer = produce((draft, action) => {
   switch (action.type) {
     case HYDRATE:
       // Attention! This will overwrite client state! Real apps should use proper reconciliation.
-      const nextState = action.payload.templateReducer;
-      if (nextState.workoutTemplates.length > 0) {
-        nextState.workoutTemplates =
-          action.payload.templateReducer.workoutTemplates;
-      }
-      draft = nextState;
-      break;
+      const nextState = { ...action.payload.templateReducer };
+      // if (draft.workoutTemplates.length > 0)
+      //   nextState.workoutTemplates = draft.workoutTemplates;
+      return nextState;
     case constants.SET_WORKOUT_TEMPLATE_NAME:
       draft.workoutTemplateForm.name = action.payload;
       break;

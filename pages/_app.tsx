@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import '../styles/globals.scss';
-import { Provider } from 'react-redux';
 import { wrapper } from '../redux';
 
 function App({ Component, pageProps }) {

@@ -13,29 +13,21 @@ interface SignUpFormProps {
 }
 
 const LoginForm = ({ className }: SignUpFormProps) => {
-  const dispatch = useDispatch();
   const router = useRouter();
   const [error, setError] = useState(null);
 
   const LoginSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Required'),
-    password: Yup.string()
-      .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-        'Password must have 8 characters, 1 letter, and 1 number'
-      )
-      .required('Required'),
+    password: Yup.string().required('Required'),
   });
 
   const login = async (values) => {
     try {
       const authService = new AuthService();
       const response = await authService.login(values);
-      console.log(response.headers['set-cookie']);
       router.push('/workouts');
     } catch (err) {
-      console.error(err);
-      // setError(err.response.data);
+      setError(err.response.data.error);
     }
   };
 

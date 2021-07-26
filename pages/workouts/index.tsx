@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { parse } from 'cookie';
 
 import PlusIcon from '../../assets/icons/plus.svg';
 import AppNavigation from '../../components/Navigation/AppNavigation';
@@ -16,28 +15,17 @@ import { useSelector } from 'react-redux';
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
-    ({ req, res }) => {
-      console.log(
-        '2. Page.getServerSideProps uses the store to dispatch things'
-      );
-      const { cookies } = req;
-      // console.log(cookies, 'poop');
-      // console.log(cookies?.token, 'tokenthings');
-      console.log(req.cookies);
-      store.dispatch(
-        getWorkoutTemplates(
-          'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZWlsQHRlc3QuY29tIiwiZXhwIjoxNjI2NTU3OTE1fQ.okdLNISPXujxMSqB_zoL3BrL_KWhL-1Pt-tJhRWc4zs'
-        )
-      );
+    async ({ req, res }) => {
+      const token = req.cookies.token;
+      await store.dispatch(getWorkoutTemplates(token));
     }
 );
 
 const Workouts = () => {
-  const w = useSelector((store) => ({
-    ...store.templateReducer,
-  }));
+  const workoutTemplates = useSelector((store) => {
+    return store.templateReducer.workoutTemplates;
+  });
   const router = useRouter();
-  console.log('POGGERS', w);
 
   return (
     <AuthGuard>
@@ -59,7 +47,10 @@ const Workouts = () => {
             <Button className={`${styles.previous}`}>previous</Button>
           </div>
         </div>
-        <WorkoutList workouts={w.workoutTemplates} />
+        <WorkoutList
+          workouts={workoutTemplates}
+          onClickItem={(workoutId) => router.push(`/workouts/${workoutId}`)}
+        />
       </AppNavigation>
     </AuthGuard>
   );

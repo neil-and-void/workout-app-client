@@ -1,22 +1,18 @@
+import { ReactNode } from 'react';
 import ExerciseItem from './ExerciseItem';
 
-const ExerciseList = () => {
-  const exercises = [
-    'squat',
-    'squat',
-    'squat',
-    'squat',
-    'squat',
-    'squat',
-    'squat',
-  ];
+interface ExerciseListProps {
+  exercises: Array<ExerciseTemplate>;
+  onClickItem?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
 
+const ExerciseList = ({ onClickItem, exercises }: ExerciseListProps) => {
   return (
-    <div>
-      {exercises.map((exercise) => (
-        <ExerciseItem exercise={exercise} />
+    <>
+      {exercises.map((exercise, idx) => (
+        <ExerciseItem key={idx} exercise={exercise.name} />
       ))}
-    </div>
+    </>
   );
 };
 
