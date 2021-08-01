@@ -22,5 +22,7 @@ export default async function getToken(req, res) {
       })
     );
     res.send();
+  } else if (req.method === 'GET') {
+    res.send({ token: req.cookies.token });
   }
 }

@@ -1,7 +1,18 @@
+import axios from 'axios';
+
 export default class WorkoutService {
-  startWorkout(workoutId, accessToken) {}
+  async startWorkout(newWorkout, accessToken) {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_DEV_NEXT_SERVER}/workouts`,
+      newWorkout,
+      {
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  }
 
-  endWorkout(workoutId, accessToken) {}
+  async endWorkout(workoutId, accessToken) {}
 
-  updateWorkout() {}
+  async updateWorkout() {}
 }

@@ -3,14 +3,14 @@ import ExerciseItem from './ExerciseItem';
 
 interface ExerciseListProps {
   exercises: Array<ExerciseTemplate>;
-  onClickItem?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClickItem?: (exercise: ExerciseTemplate) => void;
 }
 
 const ExerciseList = ({ onClickItem, exercises }: ExerciseListProps) => {
   return (
     <>
       {exercises.map((exercise, idx) => (
-        <ExerciseItem key={idx} exercise={exercise.name} />
+        <ExerciseItem onClick={(exercise) => onClickItem(exercise)} key={idx} exercise={exercise} />
       ))}
     </>
   );

@@ -13,12 +13,12 @@ export const addExerciseTemplate = (exerciseTemplate) => ({
   payload: exerciseTemplate,
 });
 
-export const createWorkoutTemplate = (workoutTemplate) => {
+export const createWorkoutTemplate = (workoutTemplate, accessToken) => {
   return async (dispatch) => {
     dispatch({
       type: constants.CREATE_WORKOUT_TEMPLATE,
     });
-    await templateService.createWorkoutTemplate(workoutTemplate);
+    await templateService.createWorkoutTemplate(workoutTemplate, accessToken);
     dispatch({
       type: constants.CREATE_WORKOUT_TEMPLATE_SUCCESS,
     });

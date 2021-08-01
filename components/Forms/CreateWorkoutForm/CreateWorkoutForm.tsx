@@ -26,7 +26,7 @@ const CreateWorkoutForm = ({ onNext, onCancel }: CreateWorkoutFormProps) => {
   return (
     <Formik
       initialValues={{
-        name: 'name',
+        name: '',
       }}
       validationSchema={CreateWorkoutSchema}
       validate={() => ({})}

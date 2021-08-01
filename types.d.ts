@@ -13,3 +13,8 @@ interface WorkoutTemplate {
   name: string;
   exerciseTemplates: Array<ExerciseTemplate>;
 }
+
+interface ExerciseSet {
+  weight: number;
+  reps: number;
+}

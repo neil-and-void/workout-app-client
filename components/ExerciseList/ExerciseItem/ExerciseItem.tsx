@@ -1,12 +1,12 @@
 import styles from './ExerciseItem.module.scss';
 
 interface ExerciseItemProps {
-  exercise: string;
-  onClick?: (id: number) => void;
+  exercise: ExerciseTemplate;
+  onClick?: (exercise: ExerciseTemplate) => void;
 }
 
-const ExerciseItem = ({ exercise }: ExerciseItemProps) => {
-  return <div className={`card ${styles.exerciseItem}`}>{exercise}</div>;
+const ExerciseItem = ({ exercise, onClick }: ExerciseItemProps) => {
+  return <div className={`card ${styles.exerciseItem}`} onClick={() => onClick(exercise)}>{exercise.name}</div>;
 };
 
 export default ExerciseItem;

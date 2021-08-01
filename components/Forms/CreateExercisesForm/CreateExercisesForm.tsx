@@ -11,10 +11,12 @@ import {
 import PlusIcon from '../../../assets/icons/plus.svg';
 import Button from '../../Button';
 import styles from './CreateExercisesForm.module.scss';
+import { useAuth } from '../../../hooks/useAuth';
 
 const CreateExercisesForm = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { getTokenSilently } = useAuth();
   const workoutTemplate = useSelector(
     ({ templateReducer }) => templateReducer.workoutTemplateForm
   );
@@ -24,9 +26,11 @@ const CreateExercisesForm = () => {
     sets: Yup.number().required('Required'),
   });
 
-  const createNewWorkoutTemplate = (values) => {
-    dispatch(createWorkoutTemplate(workoutTemplate));
-    router.push('/workouts');
+  const createNewWorkoutTemplate = async () => {
+    const token = await getTokenSilently();
+    console.log(token);
+    dispatch(createWorkoutTemplate(workoutTemplate, token));
+    // router.push('/workouts');
   };
 
   return (

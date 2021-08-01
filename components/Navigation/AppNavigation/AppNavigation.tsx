@@ -54,13 +54,13 @@ class AppNavigation extends Component<AppNavigationProps, AppNavigationState> {
             <div className="container">{this.props.children}</div>
           </Navigation.NavContent>
           <Navigation.NavBar className={styles.navBar}>
-            <Navigation.NavItem
+            {/* <Navigation.NavItem
               className={styles.navItem}
               onClick={(e) => this.props.router.push('/stats')}
             >
               <StatsIcon className={styles.icon} />
               stats
-            </Navigation.NavItem>
+            </Navigation.NavItem> */}
             <Navigation.NavItem
               className={styles.navItem}
               onClick={(e) => this.props.router.push('/workouts')}

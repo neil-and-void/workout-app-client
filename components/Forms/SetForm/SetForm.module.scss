@@ -1,0 +1,53 @@
+.setForm {
+  width: 100%;
+}
+
+.inputContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.inputContainer > div {
+  padding: 0 0.5rem;
+}
+
+.numberInput {
+  width: 4rem;
+  font-size: 1.1rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.addSet {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.incrementButtons {
+  display: flex;
+  width: 50%;
+}
+
+.decrement,
+.increment {
+  width: 100%;
+}
+
+.decrement {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.increment {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

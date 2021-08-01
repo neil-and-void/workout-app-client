@@ -1,5 +1,6 @@
 import produce from 'immer';
 import { HYDRATE } from 'next-redux-wrapper';
+import { diff } from 'jsondiffpatch';
 
 import * as constants from '../constants/template';
 
@@ -18,7 +19,9 @@ const templateReducer = produce((draft, action) => {
   switch (action.type) {
     case HYDRATE:
       // Attention! This will overwrite client state! Real apps should use proper reconciliation.
-      const nextState = { ...action.payload.templateReducer };
+      const nextState = { ...draft, ...action.payload.templateReducer };
+      console.log(action.payload.templateReducer, nextState);
+      console.log(diff(action.payload.templateReducer, nextState), '23894');
       // if (draft.workoutTemplates.length > 0)
       //   nextState.workoutTemplates = draft.workoutTemplates;
       return nextState;

@@ -6,18 +6,18 @@ import WorkoutList from '../../components/WorkoutList';
 import Button from '../../components/Button';
 import AuthGuard from '../../components/Guard';
 import { wrapper } from '../../redux';
-import {
-  getExerciseTemplates,
-  getWorkoutTemplates,
-} from '../../redux/actions/template';
+import { getActiveWorkoutExercises } from '../../redux/actions/workout';
 import styles from './Workout.module.scss';
 import { useSelector } from 'react-redux';
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ req, res }) => {
+      const state = store.getState();
+      console.log(state);
       const token = req.cookies.token;
-      await store.dispatch(getWorkoutTemplates(token));
+      console.log(req.cookies);
+      await store.dispatch(getActiveWorkoutExercises(token));
     }
 );
 
@@ -25,6 +25,7 @@ const Workouts = () => {
   const workoutTemplates = useSelector((store) => {
     return store.templateReducer.workoutTemplates;
   });
+  console.log(workoutTemplates);
   const router = useRouter();
 
   return (
@@ -50,6 +51,7 @@ const Workouts = () => {
         <WorkoutList
           workouts={workoutTemplates}
           onClickItem={(workoutId) => router.push(`/workouts/${workoutId}`)}
+          activeWorkout={11}
         />
       </AppNavigation>
     </AuthGuard>

@@ -7,9 +7,15 @@ interface WorkoutItemProps {
   children: ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className: string;
+  active: boolean;
 }
 
-const WorkoutItem = ({ children, className, onClick }: WorkoutItemProps) => {
+const WorkoutItem = ({
+  children,
+  className,
+  active,
+  onClick,
+}: WorkoutItemProps) => {
   return (
     <div className={`${styles.workoutItem} ${className}`}>
       <div className={styles.workoutInfo}>

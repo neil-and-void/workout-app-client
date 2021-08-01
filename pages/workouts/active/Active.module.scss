@@ -1,0 +1,28 @@
+.workout {
+  padding-top: 0.5rem;
+  height: calc(var(--vh) * 100);
+}
+
+.back {
+  position: absolute;
+  padding: 0.25rem 0;
+  color: #fff;
+  background-color: transparent;
+}
+
+.workoutName {
+  display: flex;
+  justify-content: center;
+}
+
+.timer {
+  font-size: 1.5rem;
+  padding-right: 1rem;
+}
+
+.workoutControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}

@@ -6,12 +6,14 @@ interface WorkoutListProps {
   className?: string;
   workouts: Array<WorkoutTemplate>;
   onClickItem?: (number) => void;
+  activeWorkout: number;
 }
 
 const WorkoutList = ({
   className,
   workouts,
   onClickItem,
+  activeWorkout,
 }: WorkoutListProps) => {
   if (workouts.length === 0) {
     return (
@@ -28,6 +30,7 @@ const WorkoutList = ({
       {workouts.map((workout, idx) => (
         <WorkoutItem
           key={idx}
+          active={activeWorkout === workout.id}
           className={styles.workoutItem}
           onClick={(e) => onClickItem(workout.id)}
         >
